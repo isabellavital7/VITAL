@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - VITAL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showTab('announcements')">Announcements</a></li>
+                <li><a href="#" onclick="showTab('resources')">Resources</a></li>
+                <li><a href="#" onclick="showTab('schedule')">Schedule Meetings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="announcements" class="tab">
+            <h2>Manage Announcements</h2>
+            <textarea id="announcement-text" class="input-field" placeholder="Write a new announcement..."></textarea><br>
+            <button onclick="addAnnouncement()">Add Announcement</button>
+            <ul id="announcement-list"></ul>
+        </section>
+
+        <section id="resources" class="tab" style="display: none;">
+            <h2>Manage Resources</h2>
+            <textarea id="resource-text" class="input-field" placeholder="Add a new resource..."></textarea><br>
+            <button onclick="addResource()">Add Resource</button>
+            <ul id="resource-list"></ul>
+        </section>
+
+        <section id="schedule" class="tab" style="display: none;">
+            <h2>Schedule Meetings</h2>
+            <input type="text" id="schedule-text" class="input-field" placeholder="Enter meeting details..."><br>
+            <button onclick="scheduleMeeting()">Add Meeting</button>
+            <ul id="schedule-list"></ul>
+        </section>
+    </main>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+        }
+
+        function addAnnouncement() {
+            const text = document.getElementById('announcement-text').value;
+            if (text) {
+                const li = document.createElement('li');
+                li.textContent = text;
+                document.getElementById('announcement-list').appendChild(li);
+                document.getElementById('announcement-text').value = '';
+            }
+        }
+
+        function addResource() {
+            const text = document.getElementById('resource-text').value;
+            if (text) {
+                const li = document.createElement('li');
+                li.textContent = text;
+                document.getElementById('resource-list').appendChild(li);
+                document.getElementById('resource-text').value = '';
+            }
+        }
+
+        function scheduleMeeting() {
+            const text = document.getElementById('schedule-text').value;
+            if (text) {
+                const li = document.createElement('li');
+                li.textContent = text;
+                document.getElementById('schedule-list').appendChild(li);
+                document.getElementById('schedule-text').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
